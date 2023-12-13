@@ -1,4 +1,4 @@
-function [outMap,xVol] = synquant_3d_two_channels(datIn,xstd,minSz,maxSz)
+function [outMap,xVol] = synquant_3d_two_channels(datIn,xstd,minSz,maxSz,dext,dextz)
     
     % run each channel
     xVol = cell(2,1);
@@ -7,9 +7,9 @@ function [outMap,xVol] = synquant_3d_two_channels(datIn,xstd,minSz,maxSz)
         xVol{kk} = synquant_3d_single(imgIn,xstd,minSz,maxSz);
     end
     
-    % update the score for each post-synaptic puncta
-    dext = 0;  % search in XY
-    dextz = 0;  % search in Z
+    % % update the score for each post-synaptic puncta
+    % dext = 0;  % search in XY
+    % dextz = 0;  % search in Z
     
     cc = bwconncomp(xVol{2});
     sLst = cc.PixelIdxList;  % check each post puncta

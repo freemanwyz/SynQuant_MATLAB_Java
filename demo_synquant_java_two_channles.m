@@ -45,12 +45,22 @@ disp(noise_estimated)
 % Run SynQuant on two channels
 % You need to provide minimum synapse size (here 10), and maximum size (here 50)
 %
+% Inputs:
+%
+% Note that there are two additional parameters for function "synquant_3d_two_channels". 
+% They are useful when pre- and post- synaptic puncta do not spatially overlap well.
+%
+% dext: search in XY direction for pre-synaptic puncta. Larger value leads to consider more remote ones as pair.
+% dextz: search in Z direction for pre-synaptic puncta. Larger value leads to consider more remote ones as pair.
+%
+%
 % Outputs:
 %
 % out_overall: the map for the combined synapse
 % res_per_channel: SynQuant results for each channel
+%
 
-[out_overall, res_per_channel] = synquant_3d_two_channels(dat_two_channel, noise_estimated, 10, 50);
+[out_overall, res_per_channel] = synquant_3d_two_channels(dat_two_channel, noise_estimated, 10, 50, 0, 0);
 
 % pixel or voxel list for each combined synapse
 pixLst = bwconncomp(out_overall);
